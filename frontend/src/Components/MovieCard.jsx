@@ -1,7 +1,12 @@
 import "../css/MovieCard.css";
 function MovieCard({movie}){
+    const { addToFavourites, removeFromFavourites, isFavourite } = useMovieContext();
     function onFavouriteClick() {
-        alert("Clicked");
+        if (isFavourite(movie.id)) {
+            removeFromFavourites(movie.id);
+        } else {
+            addToFavourites(movie);
+        }
     }
     return (
     <div className="movie-card">
